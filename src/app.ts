@@ -7,7 +7,7 @@ import { getUrl } from './handlers/get-url';
 import { createUrl } from './handlers/create-url';
 import rateLimit from 'express-rate-limit';
 
-mongoose.connect('mongodb://localhost/mymongodb', {
+mongoose.connect(process.env.DB_URL || 'mongodb://localhost/mymongodb', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
