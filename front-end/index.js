@@ -31,7 +31,7 @@ async function setUrl() {
     if (json) {
         const url = JSON.parse(json);
         lastUrl.innerText = url.short;
-        lastUrl.href = `https://make-it-short-url.herokuapp.com//urls/${url.short}`;
+        lastUrl.href = `https://make-it-short-url.herokuapp.com/urls/${url.short}`;
         urlTextField.value = lastUrl.href;
         newUrlContainer.style.display = 'flex';
     } else {
