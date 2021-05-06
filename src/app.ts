@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 443;
+
 import mongoose from 'mongoose';
 import express from 'express';
 const app = express();
@@ -16,7 +18,7 @@ const limiter = rateLimit({
 });
 
 
-app.listen(443);
+app.listen(PORT);
 
 app.use(express.static('./front-end'));
 app.use(express.urlencoded({ extended: false }));
