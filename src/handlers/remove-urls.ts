@@ -2,9 +2,13 @@ import express from 'express';
 import { ShortUrl } from '../models/short-url';
 export async function removeUrls(req: express.Request, res: express.Response): Promise<any> {
     const deleteKey = req.body.deleteKey;
-    console.log({deleteKey});
+    console.log('Delete key', deleteKey);
     console.log('ENV key', process.env.DELETE_KEY);
     
+
+    console.log('THe same', (deleteKey === process.env.DELETE_KEY));
+    
+
     if (deleteKey !== process.env.DELETE_KEY) {
         return res.status(403).json({ success: false, message: 'NOT AUTHORIZED' });
     }
