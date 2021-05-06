@@ -15,7 +15,8 @@ export async function removeUrls(req: express.Request, res: express.Response): P
 
     // Get 30 days ago
     const now = Date.now();
-    const thirtyDaysAgo = now - 2592000000;
+    // DEV: half an hour ago
+    const thirtyDaysAgo = now - 1800000;//2592000000;
     // find
     try {
         const { deletedCount } = await ShortUrl.deleteMany().where('timestamp').lt(thirtyDaysAgo);
