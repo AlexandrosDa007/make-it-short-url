@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #C9C5BA;
+}
+
+h1, h5 {
+    text-align: center;
+}
+
+input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    width: 50%;
+}
+
+#btn {
+    padding: 20px;
+    border-radius: 5px;
+    background: #97B1A6;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    max-height: 100px;
+    margin: auto;
+}
+
+#btn:hover {
+    box-shadow: 0px 0px 6px 2px rgb(0 0 0 / 30%);
+    color: white;
+}
+
+.create-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.new-url-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 50px;
+}
+
+.inside {
+    padding: 20px;
+    background: #EBBAB9;
+    color: white;
+    width: 100%;
+}
+
+.btn2 span.icon {
+    background: url('assets/copy.svg') no-repeat;
+    float: left;
+    width: 40px;
+    height: 25px;
+    margin-left: 20px;
+}
+
+#copy-btn {
+    cursor: pointer;
+}
+
+#copy-btn:hover {
+    transform: scale(1.1);
+}
+
+#url {
+    width: 60%;
+    max-height: 150px;
+    max-width: 400px;
+}
+
+.hidden {
+    display: none;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

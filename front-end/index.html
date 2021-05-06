@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic url shortener</title>
+    <link rel="stylesheet" href="index.css">
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <h1>Generate a short url</h1>
+    <h5 class="text-center">(Links are removed after 30 days)</h5>
+    <div class="create-container">
+        <textarea id="url"></textarea>
+        <button id="btn">Generate</button>
+    </div>
+    <div></div>
+    <!-- NEW URL -->
+    <div class="new-url-container" hidden>
+        <div class="inside">
+            <span>This is the last url you made</span>
+            <a id="last-url" href="http://localhost:443" alt>There is no url</a>
+        </div>
+        <div id="copy-btn" class="btn2 btn_red">
+            <span class="icon"></span>
+        </div>
+        <input type="text" id="url-text" hidden>
+    </div>
+    <div id="snackbar">Some text some message..</div>
+</body>
+
+</html>
