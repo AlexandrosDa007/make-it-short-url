@@ -40,10 +40,10 @@ async function setUrl() {
 }
 
 copyButton.addEventListener('click', async (ev) => {
-    const v = urlTextField.value;
-    await navigator.clipboard.writeText(v);
-    console.log('asfgasfg');
-    // show toast
+    const url = urlTextField.value;
+    await navigator.clipboard.writeText(url);
+    console.log({ url });
+    // show snack bar
     showSnack();
 });
 

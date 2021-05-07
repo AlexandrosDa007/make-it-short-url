@@ -1,10 +1,20 @@
+import express from 'express';
 import { ShortUrl } from '../models/short-url';
 
-export async function createUrl(req: any, res: any) {
+const MAX_URL_LENGTH = 2048;
+
+/**
+ * Creates a short url for the url provided
+ * if the url already exists then it returns it
+ * @param req The express request
+ * @param res The express response
+ * @returns A Json object
+ */
+export async function createUrl(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>>> {
     const url = req.body.url as string;
-    if (url.length > 2048) {
+    if (url.length > MAX_URL_LENGTH || url.length < 1) {
         // Too long url
-        return res.status(400).json({ success: false, message: `Url is too long` });
+        return res.status(400).json({ success: false, message: `Url must be between 1 and 2048 characters!` });
     }
     try {
         // find url
@@ -18,5 +28,4 @@ export async function createUrl(req: any, res: any) {
         console.error(error);
         return res.status(501).json({ success: false, message: `Something went wrong.` });
     }
-
 }

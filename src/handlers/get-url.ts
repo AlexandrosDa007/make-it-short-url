@@ -1,8 +1,16 @@
-import * as express from 'express';
+import express from 'express';
 import { badRequest } from '../helpers/bad-request';
 import { ShortUrl } from '../models/short-url';
 
-export async function getUrl(req: express.Request, res: express.Response) {
+/**
+ * Retrieves the url from the database
+ * if it exists then redirects the user to that url
+ * if not it returns a bad request object
+ * @param req The express request
+ * @param res The express respons
+ * @returns A bad request json object or void (redirect)
+ */
+export async function getUrl(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>> | void> {
     const url = req.params.url;
     if (!url) {
         return badRequest(res, `You didn't provide an url!`);
@@ -21,3 +29,4 @@ export async function getUrl(req: express.Request, res: express.Response) {
     }
 
 }
+
