@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make it short url</title>
+    <script defer>
+        async function redirect() {
+            const url = "<%= url %>";
+            const timeOut = setTimeout(() => {
+                window.location.assign(url);
+                clearTimeout(timeOut);
+            }, 5000);
+            let time = 4;
+            const interval = setInterval(() => {
+                const x = document.getElementById('red');
+                x.innerText = `Redirecting in ${time} seconds`;
+                time--;
+                if (time === 0) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+        redirect();
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #C9C5BA;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .thank-you {
+            color: #97B1A6;
+        }
+
+        #red {
+            margin-top: 100px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Make it short url</h1>
+    <div class="container">
+        <span class="thank-you">Thank you for using this service</span>
+        <span id="red">Redirecting in 5 seconds</span>
+    </div>
+</body>
+
+</html>

@@ -20,7 +20,7 @@ const limiter = rateLimit({
 
 
 app.listen(PORT);
-
+app.set('view engine', 'ejs');
 app.use(express.static('./front-end'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

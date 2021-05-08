@@ -22,7 +22,7 @@ export async function getUrl(req: express.Request, res: express.Response): Promi
             return badRequest(res, `The url you provided is not registered in the database.`);
         }
         await ShortUrl.updateOne({ short: match.short }, { clicks: match.clicks + 1 });
-        return res.redirect(match.full);
+        return res.render('redirect/index', { url: match.full });
     } catch (error) {
         console.error(error);
         return res.status(501).json({ success: false, message: `Something went wrong!` })
