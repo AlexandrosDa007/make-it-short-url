@@ -10,7 +10,10 @@ import { ShortUrl } from '../models/short-url';
  * @param res The express respons
  * @returns A bad request json object or void (redirect)
  */
-export async function getUrl(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>> | void> {
+export async function getUrl(
+    req: express.Request,
+    res: express.Response
+): Promise<express.Response<any, Record<string, any>> | void> {
     const url = req.params.url;
     if (!url) {
         return badRequest(res, `You didn't provide an url!`);
@@ -21,12 +24,10 @@ export async function getUrl(req: express.Request, res: express.Response): Promi
         if (!match) {
             return badRequest(res, `The url you provided is not registered in the database.`);
         }
-        await ShortUrl.updateOne({ short: match.short }, { clicks: match.clicks + 1 });
+        await ShortUrl.updateOne({ short: match.short }, { clicks: (match?.clicks ?? 0) + 1 });
         return res.render('redirect/index', { url: match.full });
     } catch (error) {
         console.error(error);
-        return res.status(501).json({ success: false, message: `Something went wrong!` })
+        return res.status(500).json({ success: false, message: `Something went wrong!` })
     }
-
 }
-

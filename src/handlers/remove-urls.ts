@@ -9,7 +9,10 @@ import { ShortUrl } from '../models/short-url';
  * @param res The express response
  * @returns A json object
  */
-export async function removeUrls(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>>> {
+export async function removeUrls(
+    req: express.Request,
+    res: express.Response
+): Promise<express.Response<any, Record<string, any>>> {
     const deleteKey = req.body.deleteKey;
 
     if (deleteKey !== process.env.DELETE_KEY) {
@@ -20,11 +23,11 @@ export async function removeUrls(req: express.Request, res: express.Response): P
     const now = Date.now();
     const thirtyDaysAgo = now - 2592000000;
     try {
-        const { deletedCount } = await ShortUrl.deleteMany().where('timestamp').lt(thirtyDaysAgo);
+        const { deletedCount } = await ShortUrl.deleteMany({}).where('timestamp').lt(thirtyDaysAgo);
         return res.status(200).json({ success: true, message: `Removed ${deletedCount ?? 0}` })
     } catch (error) {
         console.error(error);
-        return res.status(501).json({ success: false, message: 'Something went wrong!' });
+        return res.status(500).json({ success: false, message: 'Something went wrong!' });
     }
 
 }

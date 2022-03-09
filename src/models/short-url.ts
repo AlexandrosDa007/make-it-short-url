@@ -3,9 +3,9 @@ import { generate } from 'shortid';
 
 export interface IShortUrl extends Document {
     full: string;
-    short: string;
-    clicks: number;
-    timestamp: number;
+    short?: string;
+    clicks?: number;
+    timestamp?: number;
 }
 
 export const shortUrlSchema = new Schema({

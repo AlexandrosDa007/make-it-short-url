@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB_URL || 'mongodb://localhost/mymongodb', {
 
 const limiter = rateLimit({
     windowMs: 10 * 1000,
-    max: 10
+    max: 10,
 });
 
 
@@ -29,4 +29,4 @@ app.get('/urls/:url', getUrl);
 
 app.post('/urls', limiter, createUrl);
 
-app.post('/removeUrls',cors(), removeUrls);
+app.post('/removeUrls', cors(), removeUrls);

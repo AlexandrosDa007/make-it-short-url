@@ -10,7 +10,10 @@ const MAX_URL_LENGTH = 2048;
  * @param res The express response
  * @returns A Json object
  */
-export async function createUrl(req: express.Request, res: express.Response): Promise<express.Response<any, Record<string, any>>> {
+export async function createUrl(
+    req: express.Request,
+    res: express.Response
+): Promise<express.Response<any, Record<string, any>>> {
     const url = req.body.url as string;
     if (url.length > MAX_URL_LENGTH || url.length < 1) {
         // Too long url
@@ -26,6 +29,6 @@ export async function createUrl(req: express.Request, res: express.Response): Pr
         return res.status(201).json({ success: true, message: 'Created', url: newUrl });
     } catch (error) {
         console.error(error);
-        return res.status(501).json({ success: false, message: `Something went wrong.` });
+        return res.status(500).json({ success: false, message: `Something went wrong.` });
     }
 }
